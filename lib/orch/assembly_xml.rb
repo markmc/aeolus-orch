@@ -55,8 +55,4 @@ class AssemblyXML
     @image["id"] if @image
   end
 
-  def image_build
-    @image["build"] if @image
-  end
-
 end
