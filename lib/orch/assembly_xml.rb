@@ -37,16 +37,7 @@ class AssemblyXML
     raise ValidationError, "<assembly> element not found" unless @root
     errors = []
     errors << "assembly name not found" unless name
-    if @image
-      if image_id
-        errors << "image with uuid #{image_id} not found" unless Image.find(image_id)
-        if image_build
-          errors << "build with uuid #{image_build} not found" unless ImageBuild.find(image_build)
-        end
-      else
-        errors << "image id not found"
-      end
-    else
+    unless @image
       errors << "<image> element not found"
     end
     raise ValidationError, errors.join(", ") unless errors.empty?
